@@ -45,7 +45,11 @@ steps:
     - '-c'
     - |
         terraform -chdir=$$FOLDER plan         
-        
+    env:
+    - 'ORG=bodendava'
+    - 'ENVIRONMENT=profile'
+    - 'ENV_SHORT=pfl'
+    - 'FOLDER=profile    
   # [END tf-plan]
 options:
   logging: CLOUD_LOGGING_ONLY
