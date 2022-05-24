@@ -47,3 +47,5 @@ steps:
         terraform -chdir=$FOLDER plan         
         
   # [END tf-plan]
+options:
+  logging: CLOUD_LOGGING_ONLY

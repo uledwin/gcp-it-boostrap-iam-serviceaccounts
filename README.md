@@ -22,3 +22,10 @@ terraform -chdir=$FOLDER init -backend-config=../config.google.tfbackend
 # plan terraform
 
 terraform -chdir=$FOLDER plan
+
+
+## Disable organization policies
+
+gcloud resource-manager org-policies disable-enforce \
+      iam.disableCrossProjectServiceAccountUsage \
+      --project=bogota-bod-profile
