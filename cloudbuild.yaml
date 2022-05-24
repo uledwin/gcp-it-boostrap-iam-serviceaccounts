@@ -27,6 +27,7 @@ steps:
     args: 
     - '-c'
     - |
+        cp config.google.tmpl config.google.tfbackend
         sed -i s/ORG/$$ORG/g config.google.tfbackend
         sed -i s/ENVIRONMENT/$$ENVIRONMENT/g config.google.tfbackend
         sed -i s/ENV_SHORT/$$ENV_SHORT/g config.google.tfbackend
