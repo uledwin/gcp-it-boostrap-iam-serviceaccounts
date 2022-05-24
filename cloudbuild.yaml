@@ -44,7 +44,7 @@ steps:
     args: 
     - '-c'
     - |
-        terraform -chdir=$FOLDER plan         
+        terraform -chdir=$$FOLDER plan         
         
   # [END tf-plan]
 options:
