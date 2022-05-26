@@ -31,12 +31,11 @@ steps:
         sed -i s/ORG/$$ORG/g config.google.tfbackend
         sed -i s/ENVIRONMENT/$$ENVIRONMENT/g config.google.tfbackend
         sed -i s/ENV_SHORT/$$ENV_SHORT/g config.google.tfbackend
-        terraform -chdir=$$FOLDER init -backend-config=../config.google.tfbackend
+        terraform -backend-config=config.google.tfbackend
     env:
     - 'ORG=bodendava'
     - 'ENVIRONMENT=profile'
     - 'ENV_SHORT=pfl'
-    - 'FOLDER=profile'
         
   # [START tf-plan]
   - id: 'tf plan'
@@ -45,9 +44,22 @@ steps:
     args: 
     - '-c'
     - |
-        terraform -chdir=$$FOLDER plan         
-    env:
-    - 'FOLDER=profile'   
+        terraform plan   
   # [END tf-plan]
+  # [START tf-apply]
+  - id: 'tf apply'
+    name: 'hashicorp/terraform:1.0.0'
+    entrypoint: 'sh'
+    args: 
+    - '-c'
+    - | 
+        if [ $BRANCH_NAME == "main" ];; then      
+          terraform apply -auto-approve
+        else
+          echo "***************************** SKIPPING APPLYING *******************************"
+          echo "Branch '$BRANCH_NAME' is not main branch"
+          echo "*******************************************************************************"
+        fi
+# [END tf-apply]     
 options:
   logging: CLOUD_LOGGING_ONLY
