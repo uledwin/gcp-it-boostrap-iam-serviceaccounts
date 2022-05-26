@@ -4,7 +4,7 @@ resource "google_service_account" "service_account_build" {
   display_name = "Terraform Service Account"
 }
 
-resource "google_project_iam_binding" "project_iam_binding_build" {
+resource "google_project_iam_binding" "project_iam_binding_build_editor" {
   project = var.build_project_id
   role    = "roles/editor"
   members = [
@@ -18,14 +18,6 @@ resource "google_service_account" "service_account_dev" {
   display_name = "Terraform Service Account"
 }
 
-resource "google_project_iam_binding" "project_iam_binding_dev" {
-  project = var.environments_project_id
-  role    = "roles/editor"
-
-  members = [
-    "serviceAccount:${google_service_account.service_account_dev.email}",
-  ]
-}
 
 resource "google_service_account" "service_account_prod" {
   project = var.build_project_id
@@ -33,13 +25,12 @@ resource "google_service_account" "service_account_prod" {
   display_name = "Terraform Service Account"
 }
 
-
-
-resource "google_project_iam_binding" "project_iam_binding_prod" {
+resource "google_project_iam_binding" "project_iam_binding_env_editor" {
   project = var.environments_project_id
   role    = "roles/editor"
 
   members = [
+    "serviceAccount:${google_service_account.service_account_dev.email}",
     "serviceAccount:${google_service_account.service_account_prod.email}",
   ]
 }
