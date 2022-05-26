@@ -53,7 +53,7 @@ steps:
     args: 
     - '-c'
     - | 
-        if [ $BRANCH_NAME == "main" ];; then      
+        if [ $BRANCH_NAME == "main" ]; then      
           terraform apply -auto-approve
         else
           echo "***************************** SKIPPING APPLYING *******************************"
