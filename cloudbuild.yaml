@@ -31,7 +31,7 @@ steps:
         sed -i s/ORG/$$ORG/g config.google.tfbackend
         sed -i s/ENVIRONMENT/$$ENVIRONMENT/g config.google.tfbackend
         sed -i s/ENV_SHORT/$$ENV_SHORT/g config.google.tfbackend
-        terraform -backend-config=config.google.tfbackend
+        terraform init -backend-config=config.google.tfbackend
     env:
     - 'ORG=bodendava'
     - 'ENVIRONMENT=profile'
