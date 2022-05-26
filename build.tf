@@ -1,6 +1,6 @@
 resource "google_service_account" "service_account_build" {
   project = var.build_project_id
-  account_id   = "sa-iac-terraform-dev"
+  account_id   = "sa-iac-terraform-build"
   display_name = "Terraform Service Account"
 }
 
