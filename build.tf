@@ -12,6 +12,8 @@ resource "google_project_iam_binding" "project_iam_binding_build_editor" {
   ]
 }
 
+
+
 resource "google_service_account" "service_account_nonprod" {
   project = var.build_project_id
   account_id   = "sa-iac-terraform-nonprod"
@@ -30,6 +32,17 @@ resource "google_project_iam_binding" "project_iam_binding_env_editor" {
   role    = "roles/editor"
 
   members = [
+    "serviceAccount:${google_service_account.service_account_nonprod.email}",
+    "serviceAccount:${google_service_account.service_account_prod.email}",
+  ]
+}
+
+
+resource "google_project_iam_binding" "project_iam_binding_build_editor" {
+  project = var.build_project_id
+  role    = "roles/logging.logWriter"
+  members = [
+    "serviceAccount:${google_service_account.service_account_build.email}",
     "serviceAccount:${google_service_account.service_account_nonprod.email}",
     "serviceAccount:${google_service_account.service_account_prod.email}",
   ]
