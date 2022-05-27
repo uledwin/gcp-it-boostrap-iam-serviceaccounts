@@ -37,7 +37,7 @@ resource "google_project_iam_binding" "project_iam_binding_env_editor" {
 }
 
 
-resource "google_project_iam_binding" "project_iam_binding_build_editor" {
+resource "google_project_iam_binding" "project_iam_binding_build_logwriter" {
   project = var.build_project_id
   role    = "roles/logging.logWriter"
   members = [
