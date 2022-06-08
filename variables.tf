@@ -5,3 +5,7 @@ variable "build_project_id" {
 variable "environments_project_id" {
   type = string
 }
+
+variable "deploy_infra" {
+  type = bool
+}
