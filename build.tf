@@ -36,7 +36,7 @@ resource "google_project_iam_binding" "project_iam_binding_build_logwriter" {
   members = [
     "serviceAccount:${google_service_account.service_account_nonprod[0].email}",
     "serviceAccount:${google_service_account.service_account_prod[0].email}",
-    "serviceAccount:sa-iac-terraform-nonprod@${var.build_project_id}.iam.gserviceaccount.com"
+    "serviceAccount:sa-iac-bootstrap@${var.build_project_id}.iam.gserviceaccount.com"
   ]
 }
 
@@ -48,7 +48,7 @@ resource "google_project_iam_binding" "project_iam_binding_build_storageadmin" {
     "serviceAccount:${google_service_account.service_account_build[0].email}",
     "serviceAccount:${google_service_account.service_account_nonprod[0].email}",
     "serviceAccount:${google_service_account.service_account_prod[0].email}",
-    "serviceAccount:sa-iac-terraform-nonprod@${var.build_project_id}.iam.gserviceaccount.com"
+    "serviceAccount:sa-iac-bootstrap@${var.build_project_id}.iam.gserviceaccount.com"
   ]
 }
 
