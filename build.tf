@@ -17,7 +17,7 @@ resource "google_project_iam_binding" "project_iam_binding_build_editor" {
   project = var.build_project_id
   role    = "roles/editor"
   members = [
-    "serviceAccount:${google_service_account.service_account_build.email}",
+    "serviceAccount:${google_service_account.service_account_build[0].email}",
   ]
 }
 
@@ -34,8 +34,8 @@ resource "google_project_iam_binding" "project_iam_binding_build_logwriter" {
   project = var.build_project_id
   role    = "roles/logging.logWriter"
   members = [
-    "serviceAccount:${google_service_account.service_account_nonprod.email}",
-    "serviceAccount:${google_service_account.service_account_prod.email}",
+    "serviceAccount:${google_service_account.service_account_nonprod[0].email}",
+    "serviceAccount:${google_service_account.service_account_prod[0].email}",
   ]
 }
 
@@ -44,9 +44,9 @@ resource "google_project_iam_binding" "project_iam_binding_build_storageadmin" {
   project = var.build_project_id
   role    = "roles/storage.objectAdmin"
   members = [
-    "serviceAccount:${google_service_account.service_account_build.email}",
-    "serviceAccount:${google_service_account.service_account_nonprod.email}",
-    "serviceAccount:${google_service_account.service_account_prod.email}",
+    "serviceAccount:${google_service_account.service_account_build[0].email}",
+    "serviceAccount:${google_service_account.service_account_nonprod[0].email}",
+    "serviceAccount:${google_service_account.service_account_prod[0].email}",
   ]
 }
 
@@ -57,8 +57,8 @@ resource "google_project_iam_binding" "project_iam_binding_env_editor" {
   role    = "roles/editor"
 
   members = [
-    "serviceAccount:${google_service_account.service_account_nonprod.email}",
-    "serviceAccount:${google_service_account.service_account_prod.email}",
+    "serviceAccount:${google_service_account.service_account_nonprod[0].email}",
+    "serviceAccount:${google_service_account.service_account_prod[0].email}",
   ]
 }
 
