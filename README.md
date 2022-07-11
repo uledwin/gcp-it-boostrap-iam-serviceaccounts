@@ -1,24 +1,32 @@
-# gcp-it-boostrap-iam-serviceaccount
+# gcp-it-boostrap-build-objects
+
+This repository creates the service accounts that are used for deploying resources on GCP.
+
+## Setting values on terraform.tfvars
+
+Go to the  terraform.tfvars file and set these values with your own info
+
+build_project_id        = <build project id>
+environments_project_id = <app project id>
 
 
-## Set envrionment variables
+## Setting values on couldbuild.yaml
 
-export ORG=
-export ENVIRONMENT=
+Go to the cloudbuild.yaml file and set the org right value in this section
 
-## Create backend config
+env:
+    - 'ORG=<your organization name>'
 
-cp  config.google.tmpl config.google.tfbackend
-sed -i s/ORG/$ORG/g config.google.tfbackend
-sed -i s/ENVIRONMENT/$ENVIRONMENT/g config.google.tfbackend
 
-## Init terraform
+## Pushing the changes
 
-terraform init -backend-config=config.google.tfbackend
- 
-# plan terraform
+1. Push the new changes to the repo
 
-terraform plan
+git add .
+git commit -m "<your message>"
+git push
+
+
 
 
 
