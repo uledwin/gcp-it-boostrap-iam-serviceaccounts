@@ -33,7 +33,7 @@ steps:
         sed -i s/ENV_SHORT/$$ENV_SHORT/g config.google.tfbackend
         terraform init -backend-config=config.google.tfbackend
     env:
-    - 'ORG=bodendava'
+    - 'ORG=bodedwinorg10'
     - 'ENVIRONMENT=bld'
         
   # [START tf-plan]
