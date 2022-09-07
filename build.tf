@@ -60,9 +60,7 @@ resource "google_project_iam_binding" "project_iam_binding_env_editor" {
 
   members = [
     "serviceAccount:${google_service_account.service_account_nonprod[0].email}",
-    "serviceAccount:${google_service_account.service_account_prod[0].email}",
-    "user:alexander.salamanca@endava.com",
-    "user:juansebastian.castanedaflorez@endava.com"
+    "serviceAccount:${google_service_account.service_account_prod[0].email}"
   ]
 }
 
